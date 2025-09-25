@@ -53,5 +53,6 @@ This prevents the user from being fully certain about the validity of the strate
 ## Result's Discussion
 The user familiar whith statistics can run more tests with the lists collected in the function get proof. You will find out that the study loses statistical power due to the high value of I^2 found during a random-effects (DerSimonian–Laird) analysis over the tree different years.  
 In different terms, the eterogenety of the tree years inficiates a lot a comparative analysis.
+At the end, i preferred to do a simple bootstrap groupping tree years togheter which has more value and it is more rapresentative of the situation.
 ## License
 This project is licensed under the Apache License. See the [LICENSE.txt](./LICENSE.txt) file for details.
