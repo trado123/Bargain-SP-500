@@ -1,58 +1,79 @@
-# Bargain-S&amp;P-500
-# Description
-This project consist in two different programs:
-- the first one [trailing_bargain_sp500.py](./trailing_bargain_sp500.py) spots the companies that satisfy the criteria of being "bargain" in a trimestral timespan.
-- the other part is to prove, via [proof_bargain_sp500.py](./proof_bargain_sp500.py), that those companies are actually more profitable than the others.
-# Trailing Bargain S&P 500
-This python file examines all the S&amp;P 500 tickers' trimester balance sheet and trimester income statement.    
-It gives back a list containing the companies which pass the test and it is shown to the terminal.
-## Requirements
+# Bargain S&P 500
+
+## Description
+This project consists of two Python programs:
+
+1. **[trailing_bargain_sp500.py](./trailing_bargain_sp500.py)** – identifies S&P 500 companies that qualify as "bargain" in a quarterly timespan.  
+2. **[proof_bargain_sp500.py](./proof_bargain_sp500.py)** – tests statistically whether these "bargain" companies outperform the others.
+
+---
+
+## Trailing Bargain S&P 500
+This script examines all S&P 500 tickers' quarterly balance sheets and income statements.  
+It returns a list of companies that meet the "bargain" criteria and displays it in the terminal.
+
+### Requirements
 - Python 3.9+  
-- Libraries:  
+- Libraries:
 ```bash
 pip install yfinance pandas requests
 ```
-## Usage  
+
+### Usage
 Clone the repository and run:
 ```bash
 python trailing_bargain_sp500.py
 ```
-You will see in the terminal the tickers' list
-# Proof Bargain S&P500
+The terminal will display the list of qualifying tickers.
 
-This part of the project implements a statistical test to verify the **Deep Value Investing** hypothesis applied to the S&P 500 index.  
-Specifically, it evaluates whether companies classified as "bargain" (i.e. with **market value < equity** and **EPS > 0**) have achieved significantly different returns compared to non-"bargain" companies in recent years.
+---
 
-## Main Features
-- **Extract S&P 500 tickers** from Wikipedia  
-- **Fetch market and financial statement data** via `yfinance`  
-- **Build a table for each ticker** with:  
-  - annual financial statement dates  
-  - percentage change in price compared to the following year  
-  - result of the "deep value" test (True/False)  
-- **Statistical analysis**:  
-  - mean returns for bargain vs non-bargain groups  
-  - bootstrap with 10,000 samples to estimate confidence interval  
-  - probability that the observed difference is > 0  
-- **Outputs results** in a `proof.txt` file  
-## Requirements
+## Proof Bargain S&P 500
+This script performs a statistical analysis to evaluate the **Deep Value Investing** hypothesis on the S&P 500.  
+Specifically, it checks whether companies classified as "bargain" (i.e., **market value < equity** and **EPS > 0**) achieve significantly different annual returns compared to non-"bargain" companies.
+
+### Main Features
+- Extract S&P 500 tickers from Wikipedia  
+- Fetch market and financial statement data via `yfinance`  
+- Build a table for each ticker containing:  
+  - Annual financial statement dates  
+  - Year-over-year price changes  
+  - Result of the "deep value" test (True/False)  
+- Statistical analysis:  
+  - Compute mean returns for bargain vs non-bargain groups  
+  - Bootstrap with 10,000 samples to estimate confidence intervals  
+  - Estimate the probability that the observed difference is greater than 0  
+- Output results to a `proof.txt` file  
+
+### Requirements
 - Python 3.9+  
-- Libraries:  
+- Libraries:
 ```bash
 pip install yfinance numpy pandas requests
 ```
-## Usage
+
+### Usage
 Clone the repository and run:
 ```bash
-python proof_bargain_sp500
+python proof_bargain_sp500.py
 ```
-It generates a file contining the statistical results called `proof.txt`. The process will take at least 4 minutes, so the repository already contains that file.
+This will generate a file named `proof.txt` containing the statistical results.  
+The process may take several minutes, so the repository already contains a precomputed `proof.txt`.
+
+---
+
 ## Limitations
-The limited historical data available through the `yfinance` library (only the past 4 years) is a significant constraint for the statistical analysis.  
-This prevents the user from being fully certain about the validity of the strategy.  
-## Result's Discussion
-The user familiar whith statistics can run more tests with the lists collected in the function get proof. You will find out that the study loses statistical power due to the high value of I^2 found during a random-effects (DerSimonian–Laird) analysis over the tree different years.  
-In different terms, the eterogenety of the tree years inficiates a lot a comparative analysis.
-At the end, i preferred to do a simple bootstrap groupping tree years togheter which has more value and it is more rapresentative of the situation.
+`yfinance` provides historical data for only the past 4 years, limiting the statistical power of the analysis.  
+
+---
+
+## Result Discussion
+Users familiar with statistics can perform additional tests using the lists generated by the `get_proof` function.  
+The study loses some statistical power due to the high I² values observed in a random-effects (DerSimonian–Laird) analysis across three years, which indicates substantial heterogeneity.  
+To address this, a simple bootstrap combining the three years is applied, providing a more robust and representative estimate of the effect.  
+
+---
+
 ## License
 This project is licensed under the Apache License. See the [LICENSE.txt](./LICENSE.txt) file for details.
+
