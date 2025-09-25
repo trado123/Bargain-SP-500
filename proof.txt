@@ -1,0 +1,12 @@
+Strategy mean during 2023 (number of observations = 22.0000): 0.2525
+Control mean during 2023 (number of observations = 401.0000): 0.1843
+
+Strategy mean during 2022(number of observations = 23.0000): 0.13
+Control mean during 2022(number of observations = 400.0000): 0.1894
+
+Strategy mean during 2021(number of observations = 24.0000): 0.0331
+Control mean during 2021(number of observations = 399.0000): -0.0859
+
+Observed mean difference: 0.0392
+Difference probability > 0: 0.869
+95% confidence interval bootstrap: [-0.0280, 0.1113]
